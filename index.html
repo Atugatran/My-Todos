@@ -34,12 +34,17 @@
 
 
   <div class="container my-3">
-    <h1>Welcome To Magic Notes</h1>
+    <h1>Welcome To Notes</h1>
     <div class="card">
       <div class="card-body">
         <h5 class="card-title">Add a note</h5>
+
         <div class="form-group">
-          <textarea class="form-control" id="addTxt" rows="3"></textarea>
+          <input type="text" class="form-control" id="addTitle" placeholder="Type a Title - Doesn't Work">
+        </div>
+
+        <div class="form-group">
+          <textarea class="form-control" id="addTxt" rows="3" placeholder="Type a Note"></textarea>
         </div>
         <button class="btn btn-primary" id="addBtn">Add Note</button>
       </div>
