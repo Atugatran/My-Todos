@@ -1,6 +1,6 @@
 console.log("Welcome to notes app. This is app.js");
 showNotes();
-
+let data
 // If user adds a note, add it to the localStorage
 let addBtn = document.getElementById("addBtn");
 addBtn.addEventListener("click", function(e) {
@@ -9,23 +9,22 @@ addBtn.addEventListener("click", function(e) {
   let notes = localStorage.getItem("notes");
   if (notes == null) {
     notesObj = [];
-    // notesObj = {};
+    //   notesObj = {};
   } else {
     notesObj = JSON.parse(notes);
-    //  notesObj[0] = {
-    // addTitle: addTxt
-    //}
+    data = `{'Key': ${addTitle.value},'value': ${addTxt.value}}`
+    //  let obj = JSON.stringify(data);
   }
-  console.log(notesObj)
-
   if (addTxt.value != "") {
-    notesObj.push(addTxt.value);
+    // notesObj.push(addTxt.value);
+    notesObj.push(data);
+    console.log(data.Key)
 
     localStorage.setItem("notes", JSON.stringify(notesObj));
     addTxt.value = "";
   }
   // console.log(notesObj);
- // addTxt.value = "";
+  // addTxt.value = "";
   showNotes();
 });
 
