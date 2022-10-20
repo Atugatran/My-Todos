@@ -1,30 +1,31 @@
-console.log("Welcome to notes app. This is app.js");
 showNotes();
-let data
 // If user adds a note, add it to the localStorage
 let addBtn = document.getElementById("addBtn");
-addBtn.addEventListener("click", function(e) {
+addBtn.addEventListener("click", function (e) {
   let addTxt = document.getElementById("addTxt");
   let addTitle = document.getElementById("addTitle");
   let notes = localStorage.getItem("notes");
+
   if (notes == null) {
     notesObj = [];
-    //   notesObj = {};
   } else {
     notesObj = JSON.parse(notes);
-    data = `{'Key': ${addTitle.value},'value': ${addTxt.value}}`
-    //  let obj = JSON.stringify(data);
+  }
+
+  if (addTitle.value == "") {
+    // addTitle.value = "Notes";
   }
   if (addTxt.value != "") {
-    // notesObj.push(addTxt.value);
+    let data = { Title: addTitle.value, Note: addTxt.value };
     notesObj.push(data);
-    console.log(data.Key)
+
+    // console.log(notesObj[0].Title);
+    // console.log(notesObj[0].Note);
 
     localStorage.setItem("notes", JSON.stringify(notesObj));
     addTxt.value = "";
+    addTitle.value = "";
   }
-  // console.log(notesObj);
-  // addTxt.value = "";
   showNotes();
 });
 
@@ -37,16 +38,34 @@ function showNotes() {
     notesObj = JSON.parse(notes);
   }
   let html = "";
-  notesObj.forEach(function(element, index) {
+
+  // notesObj.forEach(function (element, index) {
+  //   html += `
+  //   <div class="noteCard my-2 mx-2 card" style="width: 18rem;">
+  //   <div class="card-body">
+  //   <h5 class="card-title">Note ${index + 1}</h5>
+  //   <p class="card-text"> ${element}</p>
+  //   <button id="${index}"onclick="deleteNote(this.id)" class="btn btn-primary">Delete Note</button>
+  //   </div>
+  //   </div>`;
+  //   console.log(element[0].Title);
+  //   console.log(element[0].Note);
+  // });
+
+  for (const [key, value] of Object.entries(notesObj)) {
+    // console.log(value.Title);
+
     html += `
     <div class="noteCard my-2 mx-2 card" style="width: 18rem;">
     <div class="card-body">
-    <h5 class="card-title">Note ${index + 1}</h5>
-    <p class="card-text"> ${element}</p>
-    <button id="${index}"onclick="deleteNote(this.id)" class="btn btn-primary">Delete Note</button>
+    <h5 class="card-title"> ${value.Title}</h5>
+    <p class="card-text">${value.Note}</p>
+    <button id=""onclick="deleteNote(this.id)" class="btn btn-primary">Delete Note</button>
     </div>
     </div>`;
-  });
+    // console.log(key);
+  }
+
   let notesElm = document.getElementById("notes");
   if (notesObj.length != 0) {
     notesElm.innerHTML = html;
@@ -71,14 +90,12 @@ function deleteNote(index) {
   showNotes();
 }
 
-
-let search = document.getElementById('searchTxt');
-search.addEventListener("input", function() {
-
+let search = document.getElementById("searchTxt");
+search.addEventListener("input", function () {
   let inputVal = search.value.toLowerCase();
   // console.log('Input event fired!', inputVal);
-  let noteCards = document.getElementsByClassName('noteCard');
-  Array.from(noteCards).forEach(function(element) {
+  let noteCards = document.getElementsByClassName("noteCard");
+  Array.from(noteCards).forEach(function (element) {
     let cardTxt = element.getElementsByTagName("p")[0].innerText;
     if (cardTxt.includes(inputVal)) {
       element.style.display = "block";
@@ -86,8 +103,8 @@ search.addEventListener("input", function() {
       element.style.display = "none";
     }
     // console.log(cardTxt);
-  })
-})
+  });
+});
 
 /*
 Further Features:

@@ -8,6 +8,8 @@
   <title>My Notes</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
   integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="shortcut icon" href="favicon/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="favicon/apple-touch-icon.png">
 </head>
 
 <body>
@@ -40,11 +42,11 @@
         <h5 class="card-title">Add a note</h5>
 
         <div class="form-group">
-          <input type="text" class="form-control" id="addTitle" placeholder="Type a Title - Doesn't Work">
+          <input type="text" class="form-control" id="addTitle" value="Notes" placeholder="Type a Title">
         </div>
 
         <div class="form-group">
-          <textarea class="form-control" id="addTxt" rows="3" placeholder="Type a Note"></textarea>
+          <textarea class="form-control" id="addTxt" rows="5" placeholder="Type a Note" style="resize:none;"></textarea>
         </div>
         <button class="btn btn-primary" id="addBtn">Add Note</button>
       </div>
@@ -68,4 +70,4 @@
   crossorigin="anonymous"></script>
 <script src="js/Script.js"></script>
 
-</html>
+</html> 
