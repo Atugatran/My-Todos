@@ -13,7 +13,7 @@ addBtn.addEventListener("click", function (e) {
   }
 
   if (addTitle.value == "") {
-    // addTitle.value = "Notes";
+    addTitle.value = "Notes";
   }
   if (addTxt.value != "") {
     let data = { Title: addTitle.value, Note: addTxt.value };
